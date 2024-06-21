@@ -20,8 +20,7 @@ contract CannabisBatchFactory {
     uint256 _amount,
     uint256 _thcContent,
     string calldata _seedingDate,
-    string calldata _harvestDate,
-    address to
+    string calldata _harvestDate
   ) external {
     require(
       farmerContract.getFarmer(msg.sender).farmerAddy != address(0),
@@ -33,6 +32,7 @@ contract CannabisBatchFactory {
     allBatches.push(address(newBatch));
 
     newBatch.mintBatch(
+      farmerContract.getFarmer(msg.sender).farmerAddy,
       _strainName,
       _amount,
       _thcContent,
