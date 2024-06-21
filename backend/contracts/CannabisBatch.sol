@@ -2,11 +2,8 @@
 pragma solidity 0.8.22;
 
 import '@openzeppelin/contracts/token/ERC1155/ERC1155.sol';
-import 'contracts/FarmerManagement.sol';
 
 contract CananbisBatch is ERC1155 {
-  FarmerManagement private farmerContract;
-
   struct BatchDetails {
     string strainName;
     uint256 amount;
@@ -27,23 +24,17 @@ contract CananbisBatch is ERC1155 {
     address owner
   );
 
-  constructor(string memory uri, address farmerContractAddy) ERC1155(uri) {
-    farmerContract = FarmerManagement(farmerContractAddy);
-  }
+  constructor(string memory uri) ERC1155(uri) {}
 
   function mintBatch(
+    address to,
     string calldata _strainName,
     uint256 _amount,
     uint256 _thcContent,
     string calldata _seedingDate,
     string calldata _harvestDate
   ) external {
-    require(
-      farmerContract.getFarmer(msg.sender).farmerAddy != address(0),
-      'need to be farmer'
-    );
-
-    _mint(msg.sender, currentBatchID, 1, bytes('idk'));
+    _mint(to, currentBatchID, 1, '');
 
     batches[currentBatchID] = BatchDetails(
       _strainName,
