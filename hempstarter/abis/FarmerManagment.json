@@ -1,0 +1,92 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_fullName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_businessName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_countryOrigin",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "farmerAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "taxID",
+        "type": "uint256"
+      }
+    ],
+    "name": "FarmerAdded",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_fullName", "type": "string" },
+      { "internalType": "string", "name": "_businessName", "type": "string" },
+      { "internalType": "string", "name": "_countryOrigin", "type": "string" },
+      { "internalType": "uint256", "name": "_taxID", "type": "uint256" }
+    ],
+    "name": "createFarmer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "farmerAddy", "type": "address" }
+    ],
+    "name": "getFarmer",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "id", "type": "uint256" },
+          { "internalType": "string", "name": "fullName", "type": "string" },
+          {
+            "internalType": "string",
+            "name": "businessName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "countryOrigin",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "farmerAddy",
+            "type": "address"
+          },
+          { "internalType": "uint256", "name": "taxID", "type": "uint256" }
+        ],
+        "internalType": "struct FarmerManagement.Farmer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

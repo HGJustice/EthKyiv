@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: FarmerManagment
+    network: scroll-sepolia
+    source:
+      address: "0x5258Aea7413184cb708DC2185d16a8f4DeC6522f"
+      abi: FarmerManagment
+      startBlock: 4889404
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - FarmerAdded
+      abis:
+        - name: FarmerManagment
+          file: ./abis/FarmerManagment.json
+      eventHandlers:
+        - event: FarmerAdded(uint256,string,string,string,address,uint256)
+          handler: handleFarmerAdded
+      file: ./src/farmer-managment.ts
