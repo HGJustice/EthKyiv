@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.22;
 
-import 'contracts/FarmerManagement.sol';
-import 'contracts/CannabisBatch.sol';
+import './FarmerManagement.sol';
+import './CannabisBatch.sol';
 
 contract CannabisBatchFactory {
   FarmerManagement private farmerContract;
 
-  mapping(address => address) farmerToNFT;
-  address[] allBatches;
+  mapping(address => address) private farmerToNFT;
+  address[] private allBatches;
 
   event CannabisBatchCreated(
     address batchAddress,
@@ -40,6 +40,7 @@ contract CannabisBatchFactory {
 
     newBatch.mintBatch(
       farmerContract.getFarmer(msg.sender).farmerAddy,
+      msg.sender,
       _strainName,
       _amount,
       _thcContent,

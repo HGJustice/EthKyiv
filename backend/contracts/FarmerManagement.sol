@@ -11,11 +11,11 @@ contract FarmerManagement {
     uint256 taxID;
   }
 
-  mapping(address => Farmer) farmers;
-  mapping(uint256 => Farmer) idToFarmer;
-  uint256 currentFarmerId = 1;
+  mapping(address => Farmer) private farmers;
+  mapping(uint256 => Farmer) private idToFarmer;
+  uint256 private currentFarmerId = 1;
 
-  event farmerAdded(
+  event FarmerAdded(
     uint id,
     string _fullName,
     string _businessName,
@@ -32,21 +32,21 @@ contract FarmerManagement {
   ) external {
     require(
       farmers[msg.sender].farmerAddy == address(0),
-      'user already created'
+      'User already created'
     );
 
-    Farmer memory newFarmer = Farmer(
-      currentFarmerId,
-      _fullName,
-      _businessName,
-      _countryOrigin,
-      msg.sender,
-      _taxID
-    );
+    Farmer memory newFarmer = Farmer({
+      id: currentFarmerId,
+      fullName: _fullName,
+      businessName: _businessName,
+      countryOrigin: _countryOrigin,
+      farmerAddy: msg.sender,
+      taxID: _taxID
+    });
 
     farmers[msg.sender] = newFarmer;
     idToFarmer[currentFarmerId] = newFarmer;
-    emit farmerAdded(
+    emit FarmerAdded(
       currentFarmerId,
       _fullName,
       _businessName,
