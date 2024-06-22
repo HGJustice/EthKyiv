@@ -1,0 +1,9 @@
+farmerManagementContract: 0x5258Aea7413184cb708DC2185d16a8f4DeC6522f
+
+cannabisBatchFactoryContract: 0x36c891e695a061d540a61ad3cAB96Df2E1B98F29
+
+tokenFactoryContract: 0x0A8C98cF8AD37c87fc1dE3615Dc0f0385A7b242f
+
+marketplaceContract: 0x6aa4d1AF65d9B258a800B541792e4F94017Eb3A2
+
+subgraphAPI: https://api.studio.thegraph.com/query/71573/hempstarter/v0.01
