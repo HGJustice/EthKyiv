@@ -65,19 +65,21 @@ contract Marketplace {
   }
 
   function buyToken(uint tokenID) external payable {
-    require(tokenID <= currentListingID, 'invalid listing');
+    require(tokenID > 0 && tokenID < currentListingID, 'Invalid listing');
     Listing storage current = idToListings[tokenID];
-
-    delete idToListings[tokenID];
-    delete listings[current.tokenSeller][tokenID];
+    require(current.tokenSeller != address(0), 'Listing does not exist');
 
     bool sent = IERC20(current.tokenAddress).transfer(
       msg.sender,
       current.amount
     );
-    require(sent, 'transfer failed');
+    require(sent, 'Token transfer failed');
 
-    payable(current.tokenSeller).transfer(msg.value);
+    (bool success, ) = current.tokenSeller.call{ value: msg.value }('');
+    require(success, 'Ether transfer to seller failed');
+
+    delete idToListings[tokenID];
+    delete listings[current.tokenSeller][tokenID];
 
     emit ListingBought(current.id, msg.sender, current.price, current.amount);
   }

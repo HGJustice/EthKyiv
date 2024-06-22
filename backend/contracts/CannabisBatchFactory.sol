@@ -38,6 +38,13 @@ contract CannabisBatchFactory {
     farmerToNFT[msg.sender] = address(newBatch);
     allBatches.push(address(newBatch));
 
+    emit CannabisBatchCreated(
+      address(newBatch),
+      _strainName,
+      _amount,
+      farmerContract.getFarmer(msg.sender).farmerAddy
+    );
+
     newBatch.mintBatch(
       farmerContract.getFarmer(msg.sender).farmerAddy,
       msg.sender,
@@ -46,13 +53,6 @@ contract CannabisBatchFactory {
       _thcContent,
       _seedingDate,
       _harvestDate
-    );
-
-    emit CannabisBatchCreated(
-      address(newBatch),
-      _strainName,
-      _amount,
-      farmerContract.getFarmer(msg.sender).farmerAddy
     );
   }
 
