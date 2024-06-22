@@ -68,7 +68,8 @@ contract CannabisBatchFactory {
       uint256 thcContent,
       string memory seedingDate,
       string memory harvestDate,
-      address batchOwner
+      address batchOwner,
+      bool approved
     )
   {
     require(
@@ -86,7 +87,8 @@ contract CannabisBatchFactory {
       batchDetails.thcContent,
       batchDetails.seedingDate,
       batchDetails.harvestDate,
-      batchDetails.batchOwner
+      batchDetails.batchOwner,
+      batchDetails.batchApproved
     );
   }
 
