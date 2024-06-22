@@ -10,6 +10,13 @@ contract CannabisBatchFactory {
   mapping(address => address) farmerToNFT;
   address[] allBatches;
 
+  event CannabisBatchCreated(
+    address batchAddress,
+    string strainName,
+    uint256 amount,
+    address owner
+  );
+
   constructor(address farmerContractAddress) {
     farmerContract = FarmerManagement(farmerContractAddress);
   }
@@ -27,7 +34,7 @@ contract CannabisBatchFactory {
       'You need to be a registered farmer'
     );
 
-    CananbisBatch newBatch = new CananbisBatch(uri);
+    CannabisBatch newBatch = new CannabisBatch(uri);
     farmerToNFT[msg.sender] = address(newBatch);
     allBatches.push(address(newBatch));
 
@@ -38,6 +45,13 @@ contract CannabisBatchFactory {
       _thcContent,
       _seedingDate,
       _harvestDate
+    );
+
+    emit CannabisBatchCreated(
+      address(newBatch),
+      _strainName,
+      _amount,
+      farmerContract.getFarmer(msg.sender).farmerAddy
     );
   }
 
@@ -61,8 +75,8 @@ contract CannabisBatchFactory {
       'Farmer has not created any batches'
     );
 
-    CananbisBatch batchContract = CananbisBatch(farmerToNFT[farmer]);
-    CananbisBatch.BatchDetails memory batchDetails = batchContract.getBatch(
+    CannabisBatch batchContract = CannabisBatch(farmerToNFT[farmer]);
+    CannabisBatch.BatchDetails memory batchDetails = batchContract.getBatch(
       batchID
     );
     return (
@@ -73,5 +87,11 @@ contract CannabisBatchFactory {
       batchDetails.harvestDate,
       batchDetails.batchOwner
     );
+  }
+
+  function sendBatchToTester(uint256 batchId, address tester) external {
+    address farmerAddress = farmerContract.getFarmer(msg.sender).farmerAddy;
+    CannabisBatch batchContract = CannabisBatch(farmerToNFT[farmerAddress]);
+    batchContract.sendBatchToTester(tester, batchId);
   }
 }
