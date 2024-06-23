@@ -1,6 +1,6 @@
 {
   "scroll-sepolia": {
-    "FarmerManagment": {
+    "FarmerManagement": {
       "address": "0x5258Aea7413184cb708DC2185d16a8f4DeC6522f",
       "startBlock": 4889404
     }

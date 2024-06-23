@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, BigInt, Address } from "@graphprotocol/graph-ts"
-import { FarmerAdded } from "../generated/FarmerManagment/FarmerManagment"
+import { FarmerAdded } from "../generated/FarmerManagement/FarmerManagement"
 
 export function createFarmerAddedEvent(
   id: BigInt,

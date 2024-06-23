@@ -5,11 +5,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: FarmerManagment
+    name: FarmerManagement
     network: scroll-sepolia
     source:
       address: "0x5258Aea7413184cb708DC2185d16a8f4DeC6522f"
-      abi: FarmerManagment
+      abi: FarmerManagement
       startBlock: 4889404
     mapping:
       kind: ethereum/events
@@ -18,9 +18,9 @@ dataSources:
       entities:
         - FarmerAdded
       abis:
-        - name: FarmerManagment
-          file: ./abis/FarmerManagment.json
+        - name: FarmerManagement
+          file: ./abis/FarmerManagement.json
       eventHandlers:
         - event: FarmerAdded(uint256,string,string,string,address,uint256)
           handler: handleFarmerAdded
-      file: ./src/farmer-managment.ts
+      file: ./src/farmer-management.ts

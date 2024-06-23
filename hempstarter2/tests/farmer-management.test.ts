@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { BigInt, Address } from "@graphprotocol/graph-ts"
 import { FarmerAdded } from "../generated/schema"
-import { FarmerAdded as FarmerAddedEvent } from "../generated/FarmerManagment/FarmerManagment"
-import { handleFarmerAdded } from "../src/farmer-managment"
-import { createFarmerAddedEvent } from "./farmer-managment-utils"
+import { FarmerAdded as FarmerAddedEvent } from "../generated/FarmerManagement/FarmerManagement"
+import { handleFarmerAdded } from "../src/farmer-management"
+import { createFarmerAddedEvent } from "./farmer-management-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0

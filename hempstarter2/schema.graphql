@@ -1,6 +1,6 @@
 type FarmerAdded @entity(immutable: true) {
   id: Bytes!
-  FarmerManagment_id: BigInt! # uint256
+  FarmerManagement_id: BigInt! # uint256
   _fullName: String! # string
   _businessName: String! # string
   _countryOrigin: String! # string
