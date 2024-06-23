@@ -10,3 +10,43 @@ type FarmerAdded @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type CannabisBatchCreated @entity(immutable: true) {
+  id: Bytes!
+  batchAddress: Bytes! # address
+  strainName: String! # string
+  amount: BigInt! # uint256
+  owner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type TokenCreated @entity(immutable: true) {
+  id: Bytes!
+  farmer: Bytes! # address
+  token: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type ListingBought @entity(immutable: true) {
+  id: Bytes!
+  Marketplace_id: BigInt! # uint256
+  buyer: Bytes! # address
+  price: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ListingCreated @entity(immutable: true) {
+  id: Bytes!
+  Marketplace_id: BigInt! # uint256
+  seller: Bytes! # address
+  tokenAddy: Bytes! # address
+  price: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

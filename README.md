@@ -6,4 +6,4 @@ tokenFactoryContract: 0x0A8C98cF8AD37c87fc1dE3615Dc0f0385A7b242f
 
 marketplaceContract: 0x6aa4d1AF65d9B258a800B541792e4F94017Eb3A2
 
-subgraphAPI: https://api.studio.thegraph.com/query/71573/hempstarter/v0.01
+subgraphAPI: https://api.studio.thegraph.com/query/71573/hempstarter2/v0.01

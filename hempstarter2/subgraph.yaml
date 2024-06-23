@@ -24,3 +24,66 @@ dataSources:
         - event: FarmerAdded(uint256,string,string,string,address,uint256)
           handler: handleFarmerAdded
       file: ./src/farmer-management.ts
+  - kind: ethereum
+    name: CannabisBatchFactory
+    network: scroll-sepolia
+    source:
+      address: "0x36c891e695a061d540a61ad3cAB96Df2E1B98F29"
+      abi: CannabisBatchFactory
+      startBlock: 4889416
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CannabisBatchCreated
+      abis:
+        - name: CannabisBatchFactory
+          file: ./abis/CannabisBatchFactory.json
+      eventHandlers:
+        - event: CannabisBatchCreated(address,string,uint256,address)
+          handler: handleCannabisBatchCreated
+      file: ./src/cannabis-batch-factory.ts
+  - kind: ethereum
+    name: TokenFactory
+    network: scroll-sepolia
+    source:
+      address: "0x0A8C98cF8AD37c87fc1dE3615Dc0f0385A7b242f"
+      abi: TokenFactory
+      startBlock: 4889428
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenCreated
+      abis:
+        - name: TokenFactory
+          file: ./abis/TokenFactory.json
+      eventHandlers:
+        - event: TokenCreated(address,address)
+          handler: handleTokenCreated
+      file: ./src/token-factory.ts
+  - kind: ethereum
+    name: Marketplace
+    network: scroll-sepolia
+    source:
+      address: "0x6aa4d1AF65d9B258a800B541792e4F94017Eb3A2"
+      abi: Marketplace
+      startBlock: 4889455
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ListingBought
+        - ListingCreated
+      abis:
+        - name: Marketplace
+          file: ./abis/Marketplace.json
+      eventHandlers:
+        - event: ListingBought(uint256,address,uint256,uint256)
+          handler: handleListingBought
+        - event: ListingCreated(uint256,address,address,uint256,uint256)
+          handler: handleListingCreated
+      file: ./src/marketplace.ts

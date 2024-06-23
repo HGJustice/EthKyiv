@@ -1,0 +1,86 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "farmerContractAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "batchAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "strainName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "CannabisBatchCreated",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "uri", "type": "string" },
+      { "internalType": "string", "name": "_strainName", "type": "string" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_thcContent", "type": "uint256" },
+      { "internalType": "string", "name": "_seedingDate", "type": "string" },
+      { "internalType": "string", "name": "_harvestDate", "type": "string" }
+    ],
+    "name": "createAndMintCannabisBatch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "farmer", "type": "address" },
+      { "internalType": "uint256", "name": "batchID", "type": "uint256" }
+    ],
+    "name": "getFarmerBatchDetails",
+    "outputs": [
+      { "internalType": "string", "name": "strainName", "type": "string" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "thcContent", "type": "uint256" },
+      { "internalType": "string", "name": "seedingDate", "type": "string" },
+      { "internalType": "string", "name": "harvestDate", "type": "string" },
+      { "internalType": "address", "name": "batchOwner", "type": "address" },
+      { "internalType": "bool", "name": "approved", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "batchId", "type": "uint256" },
+      { "internalType": "address", "name": "tester", "type": "address" }
+    ],
+    "name": "sendBatchToTester",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
